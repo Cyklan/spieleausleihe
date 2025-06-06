@@ -26,7 +26,9 @@ export const GameCard: FC<GameCardProps> = ({ game }) => {
       </div>
       <div className="text-sm text-muted-foreground space-y-1">
         <div>
-          {game.min_spieler} - {game.max_spieler} Spieler
+          {game.min_spieler === game.max_spieler
+            ? `${game.min_spieler} Spieler`
+            : `${game.min_spieler} - ${game.max_spieler} Spieler`}
         </div>
         <div>
           {game.min_dauer === game.max_dauer
