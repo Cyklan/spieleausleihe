@@ -12,11 +12,11 @@ const chivo = Chivo({
 
 async function getGames(): Promise<Game[]> {
   const connection = await mysql.createConnection({
-    host: process.env.DB_HOST,
+    host: "167.235.63.18",
     port: parseInt(process.env.DB_PORT || "3306"),
-    user: process.env.DB_USER,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
+    user: "bnspielt",
+    database: "afw",
+    password: "badnauheimspielt2024",
   });
 
   const query = connection.query(

@@ -1,6 +1,7 @@
 import { FC } from "react"
 import { Game } from "../types"
 import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 
 interface GameCardProps {
   game: Game
@@ -8,6 +9,7 @@ interface GameCardProps {
 
 export const GameCard: FC<GameCardProps> = ({ game }) => {
   const isAvailable = game.menge - game.ausgeliehen > 0
+  const attributes = game.attribute?.split(",") || []
 
   return (
     <div className="p-4 border rounded-lg space-y-2">
@@ -35,6 +37,15 @@ export const GameCard: FC<GameCardProps> = ({ game }) => {
             ? `${game.min_dauer} Min.`
             : `${game.min_dauer} - ${game.max_dauer} Min.`}
         </div>
+        {attributes.length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-2">
+            {attributes.map((attr) => (
+              <Badge key={attr} variant="secondary" className="text-xs">
+                {attr}
+              </Badge>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
