@@ -51,6 +51,7 @@ export const Content: FC<{ games: Game[]; attributes: string[] }> = ({
       if (activeFilters.maxPlayers && game.max_spieler > parseInt(activeFilters.maxPlayers)) return false
       if (activeFilters.minTime && game.min_dauer < parseInt(activeFilters.minTime)) return false
       if (activeFilters.maxTime && game.max_dauer > parseInt(activeFilters.maxTime)) return false
+      if (activeFilters.attribute !== "all" && !game.attribute) return false
       if (activeFilters.attribute !== "all" && game.attribute) {
         const gameAttributes = game.attribute.split(",")
         if (!gameAttributes.includes(activeFilters.attribute)) return false
